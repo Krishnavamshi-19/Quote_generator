@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { createRoot } from 'react-dom/client';
+import { gsap } from "gsap";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import App from "./App";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+const tl=gsap.timeline({defaults:{ease:"power1.out"}});
+
+
+tl.to('.text',{y:'0%',duration:1,stagger:0.3})
+
+tl.to('.slider',{y:'-100%',duration:1,delay: 0.25})
+
+tl.to('.intro',{y:'-100%'},"-=1")
+
+const container=document.getElementById('root');
+const root=createRoot(container);
+root.render(<App/>);
